@@ -1,0 +1,15 @@
+﻿@model GadgetHub.WebUI.Models.GadgetListViewModel
+
+@{
+    ViewBag.Title = "Gadget Catalog";
+}
+
+@foreach (var g in Model.Gadgets)
+{ 
+    @Html.Partial("GadgetSummary", g)
+}
+<div class="btn-group float-end">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
+                    new { page = x, category = Model.CurrentCategory }))
+
+</div>
